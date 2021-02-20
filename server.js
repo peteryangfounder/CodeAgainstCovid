@@ -23,9 +23,15 @@ const db = mongoose.connection;
 db.on('error', (err) => console.log(err));
 db.once('open', () => console.log('Connected to Database...'));
 
+// Home page route
 const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 
+// Start page
+const startRouter = require('./routes/start');
+app.use('/start', startRouter);
+
+// To be determined...
 const articleRouter = require('./routes/articles');
 app.use('/articles', articleRouter);
 
