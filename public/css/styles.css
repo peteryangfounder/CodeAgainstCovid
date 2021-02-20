@@ -77,3 +77,68 @@ footer {
 .start-image {
     width: 25rem;
 }
+
+/* Start image container */
+.start-image-container {
+    padding: 0 0 6rem 6rem;
+}
+
+/* Start button */
+.start-button {
+    border-radius: 2rem;
+    background-color: #1D619E;
+    color: white !important;
+    box-shadow: 0px 1px 3px 0px #888888;
+    margin-top: 2rem !important;
+    padding: 0.5rem 1.5rem;
+    display: block;
+    width: 15rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Start button on hover */
+.start-button:hover {
+    background-color: white;
+    border-color: #1D619E;
+    color: #1D619E !important;
+    box-shadow: 0px 1px 3px 0px #1D619E;
+}
+
+/* Upload work button */
+.upload-work-button {
+    margin-top: 6rem !important;
+    background-color: #FF7070;
+}
+
+/* Upload work button on hover */
+.upload-work-button:hover {
+    color: #FF7070 !important;
+    box-shadow: 0px 1px 3px 0px #FF7070;
+    border-color: #FF7070;
+}
+
+/* Start cta */
+.start-cta {
+    font-weight: bold;
+    padding-left: 15rem;
+}
+
+/* Add post button */
+.post-button {
+    background-color: #5E9ABF;
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+}
+
+/* Post button on hover */
+.post-button:hover {
+    border-color: #5E9ABF;
+    color: #5E9ABF !important;
+    background-color: white;
+}
+
+/* All posts section */
+.all-posts-section {
+    background-color: #DCEEFF;
+}
