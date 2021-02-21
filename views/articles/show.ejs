@@ -1,18 +1,26 @@
 <%- include('../partials/header') -%>
 
-<div class="card m-5">
+<div class="card m-5 question-container">
     <div class="card-header">
         <h3 class="card-title"><%= article.title %></h3>
     </div>
     <div class="card-body">
         <p class="text-muted"><%= article.createdAt.toLocaleDateString() %></p>
         <p class="card-text"><%= article.content %></p>
-        <a href="/" class="btn btn-outline-primary">Go Back</a>
-        <a class="btn btn-outline-warning" href="/articles/edit/<%= article._id %>">Edit</a>
-        <form class="d-inline" action="/articles/<%= article._id %>?_method=DELETE" method="POST">
-            <button class="btn btn-outline-danger">Delete</button>
-        </form>
+        <a href="/articles/all" class="btn btn-outline-info mr-2">Go back</a>
+        <a href="/comments/new?id=<%= id %>" class="btn btn-info" type="submit">Add comment</a>
     </div>
 </div>
+
+<div class="container m-5 form-container">
+    <h2 class="font-weight-bold">// Comment section</h2>
+    <hr>
+    <% article.comments.forEach(comment => { %>
+        <p class="text-muted"><%= comment[1] %></p>
+        <p class="card-text"><%= comment[0] %></p>
+        <hr>         
+    <% }) %>
+</div>
+
 
 <%- include('../partials/footer') -%>

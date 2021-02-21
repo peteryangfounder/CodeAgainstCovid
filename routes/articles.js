@@ -13,12 +13,27 @@ router.get('/all', async (req, res) => {
 	}
 });
 
+// Update vote counter
 router.post('/all', async (req, res) => {
 	try {
+
+		// Get entry with articleID
+		const article = await Article.findOne({ "_id": req.body.articleID });
+
+		if (req.body.hasOwnProperty('thumbsUpButton')) {
+			article.voteCount = article.voteCount + 1;
+		} else {
+			article.voteCount = article.voteCount - 1;
+		}
+		
+		await article.save();
+
+		// Retrieve articles from database
 		const articles = await Article.find().sort({
 			createdAt: -1
 		});
-		res.render('articles/all', { articles: articles });
+
+		res.render('articles/all', { articles: articles, article: await Article.findOne({ "_id": req.body.articleID }).voteCount });
 	} catch (err) {
 		res.render('articles/error');
 	}
@@ -34,7 +49,7 @@ router.post('/', async (req, res) => {
 		content: req.body.content
 	});
 	try {
-		const newArticle = await article.save();
+		await article.save();
 		res.redirect('/articles/all');
 	} catch (err) {
 		res.render('articles/new', { article: article });
@@ -47,54 +62,10 @@ router.get('/:id', async (req, res) => {
 		if (!article) {
 			res.redirect('/articles/all');
 		} else {
-			res.render('articles/show', { article: article });
+			res.render('articles/show', { article: article, id: req.params.id });
 		}
 	} catch (err) {
 		res.redirect('/articles/all');
-	}
-});
-
-router.delete('/:id', async (req, res) => {
-	try {
-		const article = await Article.findById(req.params.id);
-		await article.deleteOne();
-		res.redirect('/articles/all');
-	} catch (err) {
-		res.redirect('/articles/all');
-	}
-});
-
-router.get('/edit/:id', async (req, res) => {
-	try {
-		const article = await Article.findById(req.params.id);
-
-		if (!article) {
-			res.redirect('/articles/all');
-		} else {
-			res.render('articles/edit', { article: article });
-		}
-	} catch (err) {
-		res.redirect('/articles/all');
-	}
-});
-
-router.put('/:id', async (req, res) => {
-	try {
-		await Article.updateOne(
-			{ _id: req.params.id },
-			{
-				title: req.body.title,
-				content: req.body.content
-			}
-		);
-		res.redirect('/articles/all');
-	} catch (err) {
-		res.redirect('articles/edit', {
-			article: new Article({
-				title: req.body.title,
-				content: req.body.content
-			})
-		});
 	}
 });
 

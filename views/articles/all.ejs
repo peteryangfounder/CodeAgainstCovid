@@ -4,7 +4,7 @@
     <div class="container m-4">
         <div class="row">
             <div class="col-md-11">
-                <h1 class="font-weight-light"><span class="font-weight-bold">All Posts</span></h1>
+                <h1 class="font-weight-light"><span class="font-weight-bold">See what other students are doing</span></h1>
                 <a class="btn mt-2 btn-lg post-button text-white" href="/articles/new">+ Post</a>
             </div>
             <div class="col-md-1">
@@ -17,26 +17,34 @@
 <% articles.forEach(article => { %>
 <div class="card m-5">
     <div class="card-header">
-        <h3 class="card-title"><%= article.title %></h3>
+        <a href="/articles/<%= article.id %>">
+            <h3 class="card-title"><%= article.title %></h3>
+        </a>
     </div>
     <div class="card-body">
         <p class="text-muted"><%= article.createdAt.toLocaleDateString() %></p>
         <p class="card-text"><%= article.content %></p>
-        <a href="/articles/<%= article.id %>" class="btn btn-outline-primary">Read More</a>
-        <a class="btn btn-outline-warning" href="/articles/edit/<%= article._id %>">Edit</a>
-
-        <form class="d-inline" action="/articles/<%= article._id %>?_method=DELETE" method="POST">
-            <button class="btn btn-outline-danger" type="submit">Delete</button>
-        </form>
 
         <form class="d-inline float-right" action="/articles/all" method="POST">
-            <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i></button>
-            <button class="btn btn-outline-primary vote-count" type="button">16</button>
-            <button class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i></button>
+            <input name="articleID" type="hidden" value="<%= article._id %>">
+            <button name="thumbsUpButton" class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i></button>
+            <button class="btn btn-outline-secondary vote-count" type="button"><%= article.voteCount %></button>
+            <button name="thumbsDownButton" class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i></button>
         </form>
         
     </div>
 </div>
+
+<script>
+    for (i = 0; i < document.querySelectorAll('.vote-count').length; i++) {
+        if (parseInt(document.querySelectorAll('.vote-count')[i].innerHTML) >= 10 || parseInt(document.querySelectorAll('.vote-count')[i].innerHTML) <= -10) {
+            document.querySelectorAll('.m-5')[i].remove();
+        }
+    }
+</script>
+
 <% }) %>
+
+<script>history.scrollRestoration = "manual"</script>
 
 <%- include('../partials/footer') -%>

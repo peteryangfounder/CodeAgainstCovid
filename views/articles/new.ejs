@@ -1,7 +1,7 @@
 <%- include('../partials/header') -%>
 
 <div class="container m-4 form-container">
-    <h1>Post Your Question</h1>
+    <h1>What do you need help with?</h1>
     <form action="/articles" method="POST">
         <div class="form-group">
             <label>Title</label>
@@ -12,7 +12,7 @@
             <textarea required class="form-control" name="content"><%= article.content %></textarea>
         </div>
         <button class="btn btn-primary" type="submit">Save</button>
-        <a class="btn btn-secondary" href="/">Cancel</a>
+        <a class="btn btn-secondary" href="/start">Cancel</a>
     </form>
 </div>
 

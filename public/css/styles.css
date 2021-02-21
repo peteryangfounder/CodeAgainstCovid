@@ -16,7 +16,7 @@ nav {
 
 /* Navbar items */
 .nav-link {
-    padding: 0 3rem !important;
+    padding: 0 1.5rem !important;
     color: #1D619E !important;
     font-size: 1rem;
 }
@@ -62,6 +62,7 @@ nav {
 footer {
     background-color: #ff7066;
     padding: 6rem;
+    border-radius: 1rem 1rem 0 0;
 }
 
 /* Footer item & copyright notice */
@@ -147,6 +148,7 @@ footer {
 /* Card title */
 .card-title {
     font-weight: bold;
+    color: black;
 }
 
 /* Btn primary */
@@ -163,4 +165,14 @@ footer {
 /* Form container */
 .form-container {
     padding-bottom: 5rem;
+}
+
+/* Question container */
+.question-container {
+    background-color: #DCEEFF;
+}
+
+/* Highlight text */
+.highlight-text {
+    color: #FF7070;
 }

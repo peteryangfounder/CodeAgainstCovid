@@ -1,0 +1,15 @@
+<%- include('../partials/header') -%>
+
+<div class="container m-4 form-container">
+    <h1>Add Your Comment</h1>
+    <form action="/comments" method="POST">
+        <div class="form-group">
+            <textarea required class="form-control mt-4 mb-5" name="content"><%= article.content %></textarea>
+        </div>
+        <input type="hidden" name="id" value="<%= id %>">
+        <button class="btn btn-primary mr-2" type="submit">Save</button>
+        <a class="btn btn-secondary" href="/articles/<%= id %>">Cancel</a>
+    </form>
+</div>
+
+<%- include('../partials/footer') -%>

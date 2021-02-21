@@ -13,6 +13,16 @@ const articleSchema = new mongoose.Schema({
 		type: Date,
 		required: true,
 		default: Date.now
+	},
+	voteCount: {
+		type: Number,
+		required: true,
+		default: 0
+	},
+	comments: {
+		type: Array,
+		required: true,
+		default: null
 	}
 });
 
