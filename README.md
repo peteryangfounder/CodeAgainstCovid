@@ -1,2 +1,2 @@
 # RESTful-Blog
-View deployed app here: https://warm-plains-72329.herokuapp.com/.
+View deployed app here: https://gentle-headland-05139.herokuapp.com/.
