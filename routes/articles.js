@@ -13,6 +13,17 @@ router.get('/all', async (req, res) => {
 	}
 });
 
+router.post('/all', async (req, res) => {
+	try {
+		const articles = await Article.find().sort({
+			createdAt: -1
+		});
+		res.render('articles/all', { articles: articles });
+	} catch (err) {
+		res.render('articles/error');
+	}
+});
+
 router.get('/new', (req, res) => {
 	res.render('articles/new', { article: new Article() });
 });
