@@ -61,6 +61,7 @@ nav {
 /* Footer */
 footer {
     background-color: #ff7066;
+    padding: 6rem;
 }
 
 /* Footer item & copyright notice */
@@ -141,4 +142,25 @@ footer {
 /* All posts section */
 .all-posts-section {
     background-color: #DCEEFF;
+}
+
+/* Card title */
+.card-title {
+    font-weight: bold;
+}
+
+/* Btn primary */
+.btn-primary {
+    background-color: #1D619E;
+    border: #1D619E;
+}
+
+/* Vote count */
+.vote-count {
+    pointer-events: none;
+}
+
+/* Form container */
+.form-container {
+    padding-bottom: 5rem;
 }

@@ -24,9 +24,17 @@
         <p class="card-text"><%= article.content %></p>
         <a href="/articles/<%= article.id %>" class="btn btn-outline-primary">Read More</a>
         <a class="btn btn-outline-warning" href="/articles/edit/<%= article._id %>">Edit</a>
+
         <form class="d-inline" action="/articles/<%= article._id %>?_method=DELETE" method="POST">
             <button class="btn btn-outline-danger" type="submit">Delete</button>
         </form>
+
+        <form class="d-inline float-right" action="/articles/all" method="POST">
+            <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i></button>
+            <button class="btn btn-outline-primary vote-count" type="button">16</button>
+            <button class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i></button>
+        </form>
+        
     </div>
 </div>
 <% }) %>
